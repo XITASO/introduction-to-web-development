@@ -2,6 +2,9 @@
 
 namespace ASPNetRazorSample
 {
+    /// <summary>
+    /// This service simulates a database, but actually holds the data just in-memory.
+    /// </summary>
     public class StorageService
     {
         private readonly List<(string, string)> _storage = new List<(string, string)>();

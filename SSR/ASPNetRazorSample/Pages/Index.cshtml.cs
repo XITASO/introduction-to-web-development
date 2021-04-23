@@ -35,10 +35,13 @@ namespace ASPNetRazorSample.Pages
         /// <summary>
         /// Method is called on a POST request (Form submit)
         /// </summary>
-        public void OnPost()
+        public IActionResult OnPost()
         {
             _logger.LogInformation("Username is {userName}", UserName);
             _storageService.Add(UserName, Comment);
+
+            // This redirect helps when refreshing the page to not trigger POST again
+            return Redirect("/");
         }
     }
 }
