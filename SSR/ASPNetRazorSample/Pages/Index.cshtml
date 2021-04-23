@@ -1,0 +1,59 @@
+﻿@page
+@model IndexModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>HelloWorld</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="~/css/site.css"/>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-5">Picture of the day</h1>
+    <img style="width: 100%" src="~/img/augsburg.jpg"/>
+    <h2 class="mt-5">Add new comment</h2>
+    <div class="row">
+        <div class="col">
+            <form method="post">
+                <div class="form-group">
+                    <input class="form-control" type="text" name="UserName" id="UserName" value="@Model.UserName" placeholder="Name">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="text" name="Comment" placeholder="Comment">
+                </div>
+                <div class="form-group">
+                    <input class="btn btn-primary" type="submit">
+                </div>
+            </form>
+        </div>
+    </div>
+    <h2 class="mt-5">Comments</h2>
+    @foreach ((string username, string comment) in Model.StoredComments)
+    {
+        <div class="row">
+            <div class="col">
+                <h5>Comment from @username</h5>
+                <p>@comment</p>
+                <hr>
+            </div>
+        </div>
+    }
+</div>
+<script>
+    document.querySelector('form').addEventListener("submit", event => {
+        const name = document.querySelector('input[name="UserName"]').value;
+        if (name === ''){
+            event.preventDefault();
+            const errorDiv = document.createElement('div');
+            errorDiv.innerText = 'No User Name';
+            errorDiv.className = 'alert alert-warning';
+            document.querySelector('.btn-primary').parentElement.append(errorDiv);
+            // window.alert('User name is required');
+        }
+    });
+</script>
+</body>
+</html>
