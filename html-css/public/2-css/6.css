@@ -1,0 +1,41 @@
+h1 {
+  color: #ff0000; /* HEX */
+}
+
+img {
+  width: 100%;
+}
+
+.done {
+  text-decoration: line-through;
+}
+
+.done::after {
+  content: '✔';
+}
+
+li {
+  margin-left: 1em;
+}
+
+body {
+  font-family: sans-serif; /* Will be inherited */
+}
+
+h1:hover,
+h2:hover {
+  color: purple;
+}
+
+@keyframes wiggle {
+  0% { transform: rotate(0deg); }
+ 80% { transform: rotate(0deg); }
+ 85% { transform: rotate(5deg); }
+ 95% { transform: rotate(-5deg); }
+100% { transform: rotate(0deg); }
+}
+
+.wiggle {
+  display: inline-block;
+  animation: wiggle 2.5s infinite;
+}

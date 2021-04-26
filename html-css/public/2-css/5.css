@@ -1,0 +1,11 @@
+h1 {
+  color: #ff0000; /* HEX */
+}
+
+img {
+  width: 100%;
+}
+
+.done {
+  text-decoration: line-through;
+}
